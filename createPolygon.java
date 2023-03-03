@@ -30,10 +30,21 @@ public class createPolygon extends JPanel{
 	        g.drawPolygon(enemyPoly);
 	        
 	        //Large Asteroid
-	       
+	        
 	        //Medium Asteroid
 	        
 	        //Small Asteroid
+
+	        //Bullet
+	        int [] xb = {1, 1, 4, 4};
+	        int [] yb = {4, 2, 2, 4};
+	        scale = 3;
+	        for (int i =0;i<xb.length;i++) {
+	        	xb[i] = (int) (xb[i] * scale);
+	        	yb[i] = (int) (yb[i] * scale);
+	        }
+	        Polygon bulletPoly = new Polygon(xb,yb,xb.length);
+	        g.drawPolygon(bulletPoly);  
 	      }
 	    	
 	 public static void main( String args[] ) {
