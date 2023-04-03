@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author colen
- *
- */
-module blaster {
-}
