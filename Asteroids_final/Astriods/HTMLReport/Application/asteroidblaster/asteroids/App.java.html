@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>App.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6a8759;}
+.ln { color: #606366; font-weight: normal; font-style: normal; }
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+App.java</font>
+</center></td></tr></table>
+<pre><a name="l1"><span class="ln">1    </span></a><span class="s0">package </span><span class="s1">Application.asteroidblaster.asteroids</span><span class="s0">;</span>
+<a name="l2"><span class="ln">2    </span></a><span class="s0">import <a href="../../../Logic/GameEngine.java.html">Logic.GameEngine</a>;</span>
+<a name="l3"><span class="ln">3    </span></a><span class="s0">import <a href="../../../Stages/GameOverStage.java.html">Stages.GameOverStage</a>;</span>
+<a name="l4"><span class="ln">4    </span></a><span class="s0">import <a href="../../../Stages/GameStage.java.html">Stages.GameStage</a>;</span>
+<a name="l5"><span class="ln">5    </span></a><span class="s0">import <a href="../../../Stages/HighScoreStage.java.html">Stages.HighScoreStage</a>;</span>
+<a name="l6"><span class="ln">6    </span></a><span class="s0">import <a href="../../../Stages/MenuStage.java.html">Stages.MenuStage</a>;</span>
+<a name="l7"><span class="ln">7    </span></a><span class="s0">import </span><span class="s1">javafx.application.Application</span><span class="s0">;</span>
+<a name="l8"><span class="ln">8    </span></a><span class="s0">import </span><span class="s1">javafx.stage.Stage</span><span class="s0">;</span>
+<a name="l9"><span class="ln">9    </span></a><span class="s0">import </span><span class="s1">javafx.stage.StageStyle</span><span class="s0">;</span>
+<a name="l10"><span class="ln">10   </span></a>
+<a name="l11"><span class="ln">11   </span></a>
+<a name="l12"><span class="ln">12   </span></a><span class="s0">public class </span><span class="s1">App </span><span class="s0">extends </span><span class="s1">Application {</span>
+<a name="l13"><span class="ln">13   </span></a>    <span class="s0">private <a href="../../../Logic/GameEngine.java.html">GameEngine</a> </span><span class="s1">engine</span><span class="s0">; </span><span class="s2">// no getters/setters because app is not accessed outside of class</span>
+<a name="l14"><span class="ln">14   </span></a>    
+<a name="l15"><span class="ln">15   </span></a>    <span class="s1">@Override</span>
+<a name="l16"><span class="ln">16   </span></a>    <span class="s0">public void </span><span class="s1">start(Stage stage) </span><span class="s0">throws </span><span class="s1">Exception { </span><span class="s2">// JavaFX Default start is always called when JavaFX is launched</span>
+<a name="l17"><span class="ln">17   </span></a>        <span class="s2">//CReate the engine</span>
+<a name="l18"><span class="ln">18   </span></a>        <span class="s2">// refers to the single instance of GameEngine (Singleton Design Pattern - when changes are applied to specific class, all referencing components accessing will access same values (updated)</span>
+<a name="l19"><span class="ln">19   </span></a>        <span class="s1">engine = <a href="../../../Logic/GameEngine.java.html">GameEngine</a>.getEngine()</span><span class="s0">; </span><span class="s2">// getEngine is called - static method in class (belongs to class no need for object)</span>
+<a name="l20"><span class="ln">20   </span></a>        <span class="s1">stage.initStyle(StageStyle.UNDECORATED)</span><span class="s0">; </span><span class="s2">// remove border from stage to get &quot;classic arcade feeling&quot;</span>
+<a name="l21"><span class="ln">21   </span></a>        <span class="s2">//New thread is made because the game engine will lock the main thread when it starts</span>
+<a name="l22"><span class="ln">22   </span></a>        <span class="s2">//And the main thread is teh gui thread</span>
+<a name="l23"><span class="ln">23   </span></a>        <span class="s1">Thread thread = </span><span class="s0">new </span><span class="s1">Thread(() -&gt; { </span><span class="s2">// new thread is necessary otherwise main thread running application will be blocked</span>
+<a name="l24"><span class="ln">24   </span></a>            <span class="s2">//load alll the stages // AND no UI (interface updates can be done) accepts function (Lambda function created)</span>
+<a name="l25"><span class="ln">25   </span></a>            <span class="s1">engine.loadStage(</span><span class="s0">new <a href="../../../Stages/GameStage.java.html">GameStage</a></span><span class="s1">(</span><span class="s3">&quot;GameStage&quot;</span><span class="s1">))</span><span class="s0">; </span><span class="s2">// ctrl click</span>
+<a name="l26"><span class="ln">26   </span></a>            <span class="s1">engine.loadStage(</span><span class="s0">new <a href="../../../Stages/MenuStage.java.html">MenuStage</a></span><span class="s1">(</span><span class="s3">&quot;MainStage&quot;</span><span class="s1">))</span><span class="s0">;</span>
+<a name="l27"><span class="ln">27   </span></a>            <span class="s1">engine.loadStage(</span><span class="s0">new <a href="../../../Stages/GameOverStage.java.html">GameOverStage</a></span><span class="s1">(</span><span class="s3">&quot;GameOverStage&quot;</span><span class="s1">))</span><span class="s0">;</span>
+<a name="l28"><span class="ln">28   </span></a>            <span class="s1">engine.loadStage(</span><span class="s0">new <a href="../../../Stages/HighScoreStage.java.html">HighScoreStage</a></span><span class="s1">(</span><span class="s3">&quot;HighScoreStage&quot;</span><span class="s1">))</span><span class="s0">;</span>
+<a name="l29"><span class="ln">29   </span></a>            <span class="s2">// need to </span>
+<a name="l30"><span class="ln">30   </span></a>            <span class="s0">try </span><span class="s1">{</span>
+<a name="l31"><span class="ln">31   </span></a>                <span class="s2">//set the current stage</span>
+<a name="l32"><span class="ln">32   </span></a>                <span class="s1">engine.setCurrentStage(</span><span class="s3">&quot;MainStage&quot;</span><span class="s1">)</span><span class="s0">;</span>
+<a name="l33"><span class="ln">33   </span></a>                <span class="s2">//start the game</span>
+<a name="l34"><span class="ln">34   </span></a>                <span class="s1">engine.start()</span><span class="s0">; </span><span class="s2">// start game after setting stage</span>
+<a name="l35"><span class="ln">35   </span></a>            <span class="s1">} </span><span class="s0">catch </span><span class="s1">(Exception ex) {</span>
+<a name="l36"><span class="ln">36   </span></a>                <span class="s1">ex.printStackTrace()</span><span class="s0">;</span>
+<a name="l37"><span class="ln">37   </span></a>            <span class="s1">}</span>
+<a name="l38"><span class="ln">38   </span></a>        <span class="s1">})</span><span class="s0">;</span>
+<a name="l39"><span class="ln">39   </span></a>        
+<a name="l40"><span class="ln">40   </span></a>        <span class="s1">thread.start()</span><span class="s0">;</span>
+<a name="l41"><span class="ln">41   </span></a>    <span class="s1">}</span>
+<a name="l42"><span class="ln">42   </span></a>
+<a name="l43"><span class="ln">43   </span></a>    <span class="s2">// Main function to launch application -&gt; spin GUI of JAVFX</span>
+<a name="l44"><span class="ln">44   </span></a>    <span class="s0">public static void </span><span class="s1">main(String[] args) </span><span class="s0">throws </span><span class="s1">Exception {</span>
+<a name="l45"><span class="ln">45   </span></a>        <span class="s1">launch(args)</span><span class="s0">;</span>
+<a name="l46"><span class="ln">46   </span></a>    <span class="s1">}</span>
+<a name="l47"><span class="ln">47   </span></a>
+<a name="l48"><span class="ln">48   </span></a><span class="s1">}</span></pre>
+</body>
+</html>
