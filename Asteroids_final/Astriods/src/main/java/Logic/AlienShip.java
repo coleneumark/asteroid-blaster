@@ -81,7 +81,7 @@ public class AlienShip implements IGameObject, IAlienShip{
         this.currentYDestination = rnd.nextInt(settings.boardHeight) - 60;        
     }
     
-    //Draw the  ship
+    //Draw the Alien ship
     @Override
     public Polygon getPolygon() {
         double width = 60;

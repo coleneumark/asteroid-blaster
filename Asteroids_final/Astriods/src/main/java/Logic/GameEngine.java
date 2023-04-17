@@ -37,7 +37,7 @@ public class GameEngine {
         this.pausedListener.add(event);
     }
     
-    /// returns a static instince of the game engine
+    /// returns a static instance of the game engine
     // returns a single instance of game engine class
     public static GameEngine getEngine(){
         if(GameEngine.engine == null){ // static variable, stays the same everywhere
