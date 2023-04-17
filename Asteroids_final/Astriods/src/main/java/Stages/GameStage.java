@@ -325,7 +325,7 @@ public class GameStage extends Application implements IStage, IOnPauseEvent {
             container.setPrefSize(250, 100);
             container.setStyle("-fx-background-color: #f2f2f2; -fx-border-color: grey; -fx-border-width: 2;");
             Label resumeLabel = new Label("Resume");
-            Label quitLabel = new Label("Quit");
+            Label quitLabel = new Label("Go back to main menu");
 
             resumeLabel.setOnMouseClicked(e -> {
                         popup.close(); 

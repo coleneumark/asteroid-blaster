@@ -107,8 +107,8 @@ public class Asteroid implements IGameObject, IAsteroid {
     
     //Set a random destination on the stage for the asteroid to move to
     private void setRandomDestination(){
-        this.currentXDestination = rnd.nextInt(settings.boardHeight)-60;        
-        this.currentYDestination = rnd.nextInt(settings.boardWidth)-60;        
+        this.currentYDestination = rnd.nextInt(settings.boardHeight)-60;        
+        this.currentXDestination = rnd.nextInt(settings.boardWidth)-80;        
     }
 
     @Override
@@ -160,7 +160,7 @@ public class Asteroid implements IGameObject, IAsteroid {
        return this.speed;
     }
     
-    //If the asteroid colides with a player bullet it should die
+    //If the asteroid collides with a player bullet it should die
     @Override
     public boolean hasCollided(IGameObject object) {
         //check if the game object is a bullet. This is done by checking 
