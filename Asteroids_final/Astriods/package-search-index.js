@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"com.mycompany.astriods","l":"Application.asteroidblaster.asteroids"},{"m":"com.mycompany.astriods","l":"Interfaces"},{"m":"com.mycompany.astriods","l":"Logic"},{"m":"com.mycompany.astriods","l":"Stages"}];updateSearchResults();

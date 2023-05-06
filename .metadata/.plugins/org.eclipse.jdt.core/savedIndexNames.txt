@@ -1,4 +1,0 @@
-INDEX VERSION 1.131+C:\Users\XPS 13\Desktop\UCD CS\UCD Modules\COMP30820 Java Programming\Practicals\workspace_COMP30820\asteroid-blaster\.metadata\.plugins\org.eclipse.jdt.core
-2476423321.index
-179499785.index
-1865797976.index
